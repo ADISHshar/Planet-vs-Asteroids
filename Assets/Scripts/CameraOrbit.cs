@@ -13,16 +13,16 @@ public class CameraOrbit : MonoBehaviour
 
     void Start()
     {
-        if (target == null)
+        /*if (target == null)
         {
             Debug.LogError("Target not assigned in CameraOrbit script!");
             return;
-        }
+        }*/ 
 
         // Initialize yaw and pitch based on the current camera position
-        Vector3 angles = transform.eulerAngles;
-        yaw = angles.y;
-        pitch = angles.x;
+        Vector3 angles = transform.eulerAngles; // Store position in vector3
+        yaw = angles.y; // Rotation around y axis
+        pitch = angles.x; // Rotaion around x axis
     }
 
     void Update()
@@ -32,7 +32,7 @@ public class CameraOrbit : MonoBehaviour
         pitch -= Input.GetAxis("Mouse Y") * orbitSpeed;
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        distance -= scroll * zoomSpeed;
+        distance -= scroll * zoomSpeed; // For zooming in and out
         distance = Mathf.Clamp(distance, 10f, 100f); // Limit the zoom distance
 
         // Clamp the vertical rotation to avoid flipping the camera
